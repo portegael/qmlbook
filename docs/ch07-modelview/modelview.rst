@@ -26,7 +26,7 @@ Concept
 
 One of the most important aspects when developing user interfaces is to keep the representation of the data separate from the visualization. For instance, a phonebook could be arranged as a vertical list of text entries or a grid of pictures of the contacts. In both cases, the data is identical: the phonebook, but the visualization differs. This division is commonly referred to as the model-view pattern. In this pattern, the data is referred to as the model, while the visualization is handled by the view.
 
-In QML, the model and view are joined by the delegate. The responsibilies are divided as follows. The model provides the data. For each data item, there might be multiple values. In the example above, each phonebook entry has a name, a picture, and a number. The data is arranged in a view, in which each item is visualized using a delegate. The task of the view is to arrange the delegates, while each delegate shows the values of each model item to the user.
+In QML, the model and view are joined by the delegate. The responsibilies are divided as cs. The model provides the data. For each data item, there might be multiple values. In the example above, each phonebook entry has a name, a picture, and a number. The data is arranged in a view, in which each item is visualized using a delegate. The task of the view is to arrange the delegates, while each delegate shows the values of each model item to the user.
 
 .. digraph:: model_view_delegate_roles
 
@@ -165,7 +165,7 @@ The middle ground is the ``ListView.ApplyRange`` value. It attempts to keep the 
 
 In the default configuration, the view is responsible for moving the highlight into position. The speed of the movement and resizing can be controlled, either as a velocity or as a duration. The properties involved are ``highlightMoveSpeed``, ``highlightMoveDuration``, ``highlightResizeSpeed`` and ``highlightResizeDuration``. By default, the speed is set to 400 pixels per second, and the duration is set to -1, indicating that the speed and distance control the duration. If both a speed and a duration is set, the one that results in the quickest animation is chosen.
 
-To control the movement of the highlight more in detail, the ``highlightFollowCurrentItem`` property can be set to ``false``. This means that the view is no longer responsible for the movement of the highlight delegate. Instead, the movement can be controlled through a ``Behavior`` or an animation.
+To control the movement of the highlight more in detail, the ``highlightFollowsCurrentItem`` property can be set to ``false``. This means that the view is no longer responsible for the movement of the highlight delegate. Instead, the movement can be controlled through a ``Behavior`` or an animation.
 
 In the example below, the ``y`` property of the highlight delegate is bound to the ``ListView.view.currentItem.y`` attached property. This ensures that the highlight follows the current item. However, as we do not let the view move the highlight, we can control how the element is moved. This is done through the ``Behavior on y``. In the example below, the movement is divided into three steps: fading out, moving, before fading in. Notice how ``SequentialAnimation`` and ``PropertyAnimation`` elements can be used in combination with the ``NumberAnimation`` to create a more complex movement.
 
